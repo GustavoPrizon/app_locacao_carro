@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import {RFValue} from 'react-native-responsive-fontsize';
 import Logo from '../../assets/logo.svg';
 
-import {Container, Header, HeaderContent, TotalCars} from './styles';
+import {Container, Header, HeaderContent, TotalCars, CarList} from './styles';
 import { Car } from '../../components/car';
 
 export function Home(){
@@ -29,7 +29,12 @@ export function Home(){
           </TotalCars>
         </HeaderContent>
       </Header>
-      <Car data={CarData}/>
+
+      <CarList
+        data={[1,2,3]}
+        keyExtractor={item => String(item)}
+        renderItem={({item}) => <Car data={CarData}/>}
+      />
     </Container>
   );
 }
