@@ -24,11 +24,12 @@ interface CarData {
 
 interface Props {
   data: CarData,
+  onPress: () => {},
 }
 
-export function Car({ data }: Props){
+export function Car({ data, onPress, ...rest }: Props){
   return (
-    <Container>
+    <Container onPress={onPress} {...rest}>
       <Details>
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>

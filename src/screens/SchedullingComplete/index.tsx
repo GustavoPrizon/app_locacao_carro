@@ -12,9 +12,11 @@ import {
 } from './styles';
 import { ConfirmButton } from '../../components/ConfirmButton';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
 
 export function SchedullingComplete(){
   const {width} = useWindowDimensions();
+  const navigation = useNavigation<any>();
   return (
     <Container>
       <StatusBar style="light" translucent/>
@@ -29,7 +31,7 @@ export function SchedullingComplete(){
         </Message>
       </Content>
       <Footer>
-        <ConfirmButton title='OK'/>
+        <ConfirmButton title='OK' onPress={() => navigation.navigate({name: 'Home'})}/>
       </Footer>
     </Container>
   );

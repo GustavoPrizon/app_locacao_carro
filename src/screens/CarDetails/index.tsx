@@ -26,12 +26,16 @@ import {Container,
   Footer
 } from './styles';
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 
 export function CarDetails(){
+  const navigation = useNavigation<any>();
   return (
     <Container>
+      <StatusBar style='dark' translucent />
       <Header>
-        <BackButton onPress={() => {}}/>
+        <BackButton onPress={() => navigation.goBack()}/>
       </Header>
 
       <CarImages>
@@ -66,7 +70,7 @@ export function CarDetails(){
         </About>
       </Content>
       <Footer>
-        <Button title='Confirmar'/>
+        <Button title='Escolher perriodo do aluguel' onPress={() => navigation.navigate({name: 'Schedulling'})}/>
       </Footer>
     </Container>
   );

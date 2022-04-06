@@ -38,13 +38,15 @@ import {Container,
 } from './styles';
 import { Button } from '../../components/Button';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useNavigation } from '@react-navigation/native';
 
 export function SchedullingDetails(){
   const theme = useTheme();
+  const navigation = useNavigation<any>();
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => {}}/>
+        <BackButton onPress={() => navigation.goBack()}/>
       </Header>
 
       <CarImages>
@@ -96,7 +98,7 @@ export function SchedullingDetails(){
         </RentalPrice>
       </Content>
       <Footer>
-        <Button color={theme.colors.success} title='Alugar agora'/>
+        <Button color={theme.colors.success} title='Alugar agora' onPress={() => navigation.navigate({name: 'SchedullingComplete'})}/>
       </Footer>
     </Container>
   );

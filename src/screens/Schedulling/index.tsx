@@ -18,14 +18,16 @@ import {
 } from './styles';
 import { Button } from '../../components/Button';
 import { Calendar } from '../../components/Calendar';
+import { useNavigation } from '@react-navigation/native';
 
 export function Schedulling(){
   const theme = useTheme();
+  const navigation = useNavigation<any>();
   return (
     <Container>
       <Header>
         <StatusBar style='light' translucent/>
-        <BackButton color={theme.colors.shape} onPress={() => {}}/>
+        <BackButton color={theme.colors.shape} onPress={() => navigation.goBack()}/>
         <Title>
           Escolha uma {'\n'}
           data de início e {'\n'}
@@ -49,7 +51,7 @@ export function Schedulling(){
         <Calendar />
       </Content>
       <Footer>
-        <Button title="Confirmar"/>
+        <Button title="Confirmar" onPress={() => navigation.navigate({name: 'SchedullingDetails'})}/>
       </Footer>
 
     </Container>
