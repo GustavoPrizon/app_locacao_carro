@@ -4,6 +4,7 @@ import {Archivo_400Regular, Archivo_500Medium, Archivo_600SemiBold} from '@expo-
 import {ThemeProvider} from 'styled-components'
 import { Home } from './src/screens/Home';
 import { CarDetails } from './src/screens/CarDetails';
+import { Schedulling } from './src/screens/Schedulling';
 import AppLoading from 'expo-app-loading';
 import theme from './src/styles/theme';
 
@@ -22,7 +23,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CarDetails/>
+      <Schedulling/>
     </ThemeProvider>
   );
 }
