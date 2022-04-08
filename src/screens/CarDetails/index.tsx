@@ -69,7 +69,7 @@ export function CarDetails(){
         <About>{car.about}</About>
       </Content>
       <Footer>
-        <Button title='Escolher perriodo do aluguel' onPress={() => navigation.navigate('Schedulling')}/>
+        <Button title='Escolher perriodo do aluguel' onPress={() => navigation.navigate('Schedulling', {car})}/>
       </Footer>
     </Container>
   );
