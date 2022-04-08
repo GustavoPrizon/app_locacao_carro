@@ -1,6 +1,7 @@
 import React from 'react';
 import GasolineSvg from '../../assets/gasoline.svg';
 import {CarDTO} from '../../dtos/CarDTO';
+import { getAccessoryIcons } from '../../utils/getAccessoryIcons';
 
 import {Container,
   Details,
@@ -19,6 +20,8 @@ interface Props {
 }
 
 export function Car({ data, onPress, ...rest }: Props){
+  const MotorIcon = getAccessoryIcons(data.fuel_type);
+
   return (
     <Container onPress={onPress} {...rest}>
       <Details>
@@ -32,7 +35,7 @@ export function Car({ data, onPress, ...rest }: Props){
           </Rent>
 
           <Type>
-            <GasolineSvg />
+            <MotorIcon />
           </Type>
         </About>
       </Details>
