@@ -2,5 +2,5 @@
 schedule car
 
 First clone the project. 
-After clone the project execute yarn to install all dependencies, after installing all dependencies execute yarn API to start API, 
+After clone the project execute yarn to install all dependencies, after installing all dependencies execute yarn api to start API, 
 with API started executed expo start and scan qrcode in your phone.
