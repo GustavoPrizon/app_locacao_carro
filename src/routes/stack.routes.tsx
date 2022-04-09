@@ -5,6 +5,7 @@ import { CarDetails } from '../screens/CarDetails';
 import { Schedulling } from '../screens/Schedulling';
 import { SchedullingComplete } from '../screens/SchedullingComplete';
 import { SchedullingDetails } from '../screens/SchedullingDetails';
+import { Mycars } from '../screens/Mycars';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export function StackRoutes() {
       <Screen name="Schedulling" component={Schedulling}/>
       <Screen name="SchedullingDetails" component={SchedullingDetails}/>
       <Screen name="SchedullingComplete" component={SchedullingComplete}/>
+      <Screen name="MyCars" component={Mycars}/>
     </Navigator>
   )
 }

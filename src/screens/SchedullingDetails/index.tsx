@@ -83,12 +83,18 @@ export function SchedullingDetails(){
         ...dates,
       ];
   
-      api.put(`/schedules_bycars/${car.id}`, {
+     await  api.put(`/schedules_bycars/${car.id}`, {
         id: car.id,
         unavailable_dates: unavailable_dates,
       })
         .then(() => navigation.navigate('SchedullingComplete'))
         .catch(() => Alert.alert('Unable to confirm schedule'))
+      await api.post('/schedules_byuser', {
+        user_id: 2, 
+        car,
+        startDate: format(getPlatformDate(new Date(dates[0])),'dd/MM/yyyy'),
+        endDate: format(getPlatformDate(new Date(dates[dates.length - 1])),'dd/MM/yyyy')
+      })
     }
   }
 
