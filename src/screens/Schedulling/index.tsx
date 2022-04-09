@@ -45,11 +45,7 @@ export function Schedulling(){
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
 
   function handleConfirmRental() {
-    if(!rentalPeriod.start || !rentalPeriod.end){
-      Alert.alert('Select interval for schedulle')
-    }else{
       navigation.navigate('SchedullingDetails', {car, dates: Object.keys(markedDate)})
-    }
   };
 
   function handleChangeDate(date: DayProps) {
@@ -103,7 +99,7 @@ export function Schedulling(){
         <Calendar markedDates={markedDate} onDayPress={handleChangeDate}/>
       </Content>
       <Footer>
-        <Button title="Confirmar" onPress={handleConfirmRental}/>
+        <Button title="Confirmar" onPress={handleConfirmRental} enabled={!!rentalPeriod.startFormatted}/>
       </Footer>
 
     </Container>
