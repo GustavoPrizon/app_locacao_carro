@@ -1,4 +1,4 @@
-# app_locacao_carro
+# Schedule Car
 schedule car
 
 First clone the project. 
