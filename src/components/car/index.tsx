@@ -16,14 +16,15 @@ import {Container,
 
 interface Props {
   data: CarDTO,
+  elevation?: number,
   onPress: () => {},
 }
 
-export function Car({ data, onPress, ...rest }: Props){
+export function Car({ data, elevation, onPress, ...rest }: Props){
   const MotorIcon = getAccessoryIcons(data.fuel_type);
 
   return (
-    <Container onPress={onPress} {...rest}>
+    <Container style={{elevation: elevation}} onPress={onPress} {...rest}>
       <Details>
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>

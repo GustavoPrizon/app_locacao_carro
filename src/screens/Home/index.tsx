@@ -48,7 +48,7 @@ export function Home(){
           data={cars}
           keyExtractor={item => item.id}
           renderItem={({item}) => 
-            <Car data={item} onPress={() => navigation.navigate('CarDetails', {car: item})}/>
+            <Car elevation={8} data={item} onPress={() => navigation.navigate('CarDetails', {car: item})}/>
           }
         />
       }
