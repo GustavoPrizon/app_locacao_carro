@@ -7,15 +7,16 @@ import { SchedullingComplete } from '../screens/SchedullingComplete';
 import { SchedullingDetails } from '../screens/SchedullingDetails';
 import { Mycars } from '../screens/Mycars';
 import { Splash } from '../screens/Splash';
+import { Signin } from '../screens/SignIn';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
 export function StackRoutes() {
   return (
-    <Navigator initialRouteName='Splash' screenOptions={{
+    <Navigator initialRouteName='SignIn' screenOptions={{
       headerShown: false
     }}>
-      <Screen name="Splash" component={Splash}/>
+      <Screen name="SignIn" component={Signin}/>
       <Screen name="Home" component={Home} options={{
         gestureEnabled: false,
       }}/>
