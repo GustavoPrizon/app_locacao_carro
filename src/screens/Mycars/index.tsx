@@ -26,7 +26,7 @@ import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native';
 import { Car } from '../../components/Car';
-import { Load } from '../../components/Load';
+import {LoadAnimation} from '../../components/LoadAnimation';
 
 interface CarProps {
   id: string,
@@ -70,7 +70,7 @@ export function Mycars(){
         </SubTitle>
       </Header>
 
-      {loading ? <Load/> : (
+      {loading ? <LoadAnimation/> : (
           <Content>
           <Appointments>
             <AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
