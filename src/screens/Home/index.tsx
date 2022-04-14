@@ -18,7 +18,7 @@ import { Car } from '../../components/Car';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, BackHandler} from 'react-native';
 
 const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -69,15 +69,23 @@ export function Home(){
     getCard();
   },[])
 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      return true;
+    })
+  },[])
+
   return (
     <Container>
       <StatusBar style='light' translucent />
       <Header>
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)}/>
-          <TotalCars>
-            Total de {cars.length} carros
-          </TotalCars>
+          {!loading && (
+            <TotalCars>
+              Total de {cars.length} carros
+            </TotalCars>
+          )}
         </HeaderContent>
       </Header>
       {loading ? <Load /> : 
