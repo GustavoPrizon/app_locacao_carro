@@ -2,12 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useTheme } from 'styled-components';
 import {Button} from '../../components/Button';
+import { Input } from '../../components/Input';
 
 import {
   Container,
   Header,
   Title,
   SubTitle,
+  Form,
   Footer
 } from './styles';
 
@@ -27,6 +29,15 @@ export function Signin(){
           uma experiência incrível.
         </SubTitle>
       </Header>
+      <Form>
+        <Input 
+          iconName='mail' 
+          placeholder='E-mail' 
+          keyboardType='email-address'
+          autoCorrect={false}
+          autoCapitalize='none'
+        />
+      </Form>
       <Footer>
         <Button 
           title='Login'
