@@ -30,9 +30,10 @@ export function PasswordInput({ iconName, value, ...rest }: InputProps) {
   }
 
   return (
-    <Container isFocused={isFocused}>
+    <Container>
       <IconContainer
         style={{ borderTopLeftRadius: 8, borderBottomLeftRadius: 8 }}
+        isFocused={isFocused}
       >
         <Feather
           name={iconName}
@@ -47,10 +48,12 @@ export function PasswordInput({ iconName, value, ...rest }: InputProps) {
         {...rest}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
+        isFocused={isFocused}
       />
       <TouchableOpacity onPress={() => handleChangePasswordVisible()}>
         <IconContainer
           style={{ borderTopRightRadius: 8, borderBottomRightRadius: 8 }}
+          isFocused={isFocused}
         >
           <Feather
             name={isPasswordVisible ? "eye" : "eye-off"}

@@ -25,9 +25,10 @@ export function Input({ iconName, value, ...rest }: InputProps) {
   }
 
   return (
-    <Container isFocused={isFocused}>
+    <Container>
       <IconContainer
         style={{ borderTopLeftRadius: 8, borderBottomLeftRadius: 8 }}
+        isFocused={isFocused}
       >
         <Feather
           name={iconName}
@@ -41,6 +42,7 @@ export function Input({ iconName, value, ...rest }: InputProps) {
         style={{ borderTopRightRadius: 8, borderBottomRightRadius: 8 }}
         onFocus={() => handleInputFocus()}
         onBlur={handleInputBlur}
+        isFocused={isFocused}
         {...rest}
       />
     </Container>
