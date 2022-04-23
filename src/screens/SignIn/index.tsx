@@ -1,10 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
+import { KeyboardAvoidingView, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { useTheme } from "styled-components";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
