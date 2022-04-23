@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -14,6 +14,8 @@ import { Container, Header, Title, SubTitle, Form, Footer } from "./styles";
 
 export function Signin() {
   const theme = useTheme();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
@@ -37,12 +39,16 @@ export function Signin() {
               keyboardType="email-address"
               autoCorrect={false}
               autoCapitalize="none"
+              onChangeText={setEmail}
+              value={email}
             />
             <PasswordInput
               iconName="lock"
               placeholder="Senha"
               autoCorrect={false}
               autoCapitalize="none"
+              onChangeText={setPassword}
+              value={password}
             />
           </Form>
           <Footer>
