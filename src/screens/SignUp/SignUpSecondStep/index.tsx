@@ -33,8 +33,8 @@ export function SignUpSecondStep() {
           <Header>
             <BackButton onPress={handleBack} />
             <Steps>
-              <Bullet active />
               <Bullet />
+              <Bullet active />
             </Steps>
           </Header>
           <Title>Crie sua {`\n`} conta</Title>
