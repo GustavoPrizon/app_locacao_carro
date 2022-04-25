@@ -7,6 +7,7 @@ import { BackButton } from "../../../components/BackButton";
 import { Bullet } from "../../../components/Bullet";
 import { Button } from "../../../components/Button";
 import { PasswordInput } from "../../../components/PasswordInput";
+import { api } from "../../../services/api";
 
 import {
   Container,
@@ -47,13 +48,21 @@ export function SignUpSecondStep() {
       return Alert.alert("Opss!", "As senhas não são iguais");
     }
 
-    // Enviar para a API
-
-    navigation.navigate("Confirmation", {
-      nextScreen: "SignIn",
-      title: "Conta criada!",
-      message: `Agora é só fazer login \ne aproveitar`,
-    });
+    await api
+      .post("/users", {
+        name: user.name,
+        email: user.email,
+        driver_license: user.cnh,
+        password,
+      })
+      .then(() => {
+        navigation.navigate("Confirmation", {
+          nextScreen: "SignIn",
+          title: "Conta criada!",
+          message: `Agora é só fazer login \ne aproveitar`,
+        });
+      })
+      .catch(() => Alert.alert("Opss!", "Ocorreu um erro ao criar sua conta"));
   }
 
   return (
