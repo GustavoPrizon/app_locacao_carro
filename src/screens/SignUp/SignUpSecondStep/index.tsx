@@ -27,7 +27,7 @@ interface Params {
 }
 
 export function SignUpSecondStep() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const theme = useTheme();
@@ -49,7 +49,11 @@ export function SignUpSecondStep() {
 
     // Enviar para a API
 
-    // Nevegar para a tela de cadastrado
+    navigation.navigate("Confirmation", {
+      nextScreen: "SignIn",
+      title: "Conta criada!",
+      message: `Agora é só fazer login \ne aproveitar`,
+    });
   }
 
   return (
