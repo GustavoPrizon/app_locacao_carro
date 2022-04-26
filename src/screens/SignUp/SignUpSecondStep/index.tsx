@@ -33,6 +33,7 @@ export function SignUpSecondStep() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const theme = useTheme();
   const route = useRoute();
+  const [load, setLoad] = useState(false);
 
   const { user } = route.params as Params;
 
@@ -41,6 +42,7 @@ export function SignUpSecondStep() {
   }
 
   async function handleRegister() {
+    setLoad(true);
     if (!password || !confirmPassword) {
       return Alert.alert("Opss!", "Preencha a senha ou confirme a senha");
     }
@@ -62,7 +64,11 @@ export function SignUpSecondStep() {
           message: `Agora é só fazer login \ne aproveitar`,
         });
       })
-      .catch(() => Alert.alert("Opss!", "Ocorreu um erro ao criar sua conta"));
+      .catch((error) => {
+        console.log(error);
+        Alert.alert("Opss!", "Ocorreu um erro ao criar sua conta");
+      })
+      .finally(() => setLoad(false));
   }
 
   return (
@@ -99,6 +105,8 @@ export function SignUpSecondStep() {
             title="Cadastrar"
             color={theme.colors.success}
             onPress={handleRegister}
+            load={load}
+            enabled={!load}
           />
         </Container>
       </TouchableWithoutFeedback>
