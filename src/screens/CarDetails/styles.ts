@@ -1,10 +1,13 @@
-import styled from 'styled-components/native';
-import {getBottomSpace, getStatusBarHeight} from 'react-native-iphone-x-helper';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled from "styled-components/native";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({theme}) => theme.colors.background_secondary};
+  background-color: ${({ theme }) => theme.colors.background_secondary};
 `;
 
 export const Header = styled.View`
@@ -14,10 +17,11 @@ export const Header = styled.View`
   position: absolute;
   margin-top: ${getStatusBarHeight() + 18}px;
   margin-left: 24px;
+  z-index: 99;
 `;
 
 export const CarImages = styled.View`
-  margin-top: ${getStatusBarHeight()+32}px;
+  margin-top: ${getStatusBarHeight() + 32}px;
 `;
 
 export const Details = styled.View`
@@ -31,38 +35,38 @@ export const Details = styled.View`
 export const Description = styled.View``;
 
 export const Brand = styled.Text`
-  font-family: ${({theme}) => theme.fonts.secondary_500};
-  color: ${({theme}) => theme.colors.text_detail};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
+  color: ${({ theme }) => theme.colors.text_detail};
   font-size: ${RFValue(10)}px;
 
   text-transform: uppercase;
 `;
 
 export const Name = styled.Text`
-  font-family: ${({theme}) => theme.fonts.secondary_500};
-  color: ${({theme}) => theme.colors.title};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
+  color: ${({ theme }) => theme.colors.title};
   font-size: ${RFValue(25)}px;
 `;
 
 export const Rent = styled.View``;
 
 export const Period = styled.Text`
-  font-family: ${({theme}) => theme.fonts.secondary_500};
-  color: ${({theme}) => theme.colors.text_detail};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
+  color: ${({ theme }) => theme.colors.text_detail};
   font-size: ${RFValue(10)}px;
 
   text-transform: uppercase;
 `;
 
 export const Price = styled.Text`
-  font-family: ${({theme}) => theme.fonts.secondary_500};
-  color: ${({theme}) => theme.colors.main};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
+  color: ${({ theme }) => theme.colors.main};
   font-size: ${RFValue(25)}px;
 `;
 
 export const About = styled.Text`
-  font-family: ${({theme}) => theme.fonts.primary_400};
-  color: ${({theme}) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.text};
   font-size: ${RFValue(15)}px;
   text-align: justify;
   margin-top: 23px;
@@ -80,6 +84,6 @@ export const Accessories = styled.View`
 
 export const Footer = styled.View`
   width: 100%;
-  background-color: ${({theme}) => theme.colors.background_secondary};
-  padding: 24px 24px ${getBottomSpace()+24}px;
+  background-color: ${({ theme }) => theme.colors.background_secondary};
+  padding: 24px 24px ${getBottomSpace() + 24}px;
 `;

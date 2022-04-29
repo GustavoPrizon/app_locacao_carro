@@ -16,17 +16,25 @@ export function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMount = true;
     async function getCard() {
       try {
         const response = await api.get("/cars");
-        setCars(response.data);
+        if (isMount) {
+          setCars(response.data);
+        }
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        if (isMount) {
+          setLoading(false);
+        }
       }
     }
     getCard();
+    return () => {
+      isMount = false;
+    };
   }, []);
 
   return (
