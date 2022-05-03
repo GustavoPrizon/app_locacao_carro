@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../screens/Home";
 import { Mycars } from "../screens/Mycars";
+import { Profile } from "../screens/Profile";
 import { AppStackRoutes } from "./app.stack.routes";
 import HomeSvg from "../assets/home.svg";
 import CarSvg from "../assets/car.svg";
@@ -38,20 +39,20 @@ export function AppTabRoutes() {
         }}
       />
       <Screen
-        name="Profile"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <PeopleSvg width={24} height={24} fill={color} />
-          ),
-        }}
-      />
-      <Screen
         name="MyCars"
         component={Mycars}
         options={{
           tabBarIcon: ({ color }) => (
             <CarSvg width={24} height={24} fill={color} />
+          ),
+        }}
+      />
+      <Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <PeopleSvg width={24} height={24} fill={color} />
           ),
         }}
       />
