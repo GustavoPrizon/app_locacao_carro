@@ -54,7 +54,7 @@ export function SignUpSecondStep() {
       .post("/users", {
         name: user.name,
         email: user.email,
-        driver_license: user.cnh,
+        drive_license: user.cnh,
         password,
       })
       .then(() => {

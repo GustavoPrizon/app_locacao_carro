@@ -27,6 +27,7 @@ interface SignInCredentials {
 interface AuthContextData {
   user: User;
   signIn: (credentials: SignInCredentials) => Promise<void>;
+  SignOut: () => Promise<void>;
 }
 
 interface AuthProvidderProps {
@@ -67,6 +68,20 @@ function AuthProvider({ children }: AuthProvidderProps) {
     }
   }
 
+  async function SignOut() {
+    try {
+      const userCollection = database.get<ModelUser>("users");
+      await database.write(async () => {
+        const userSelect = await userCollection.find(data.id);
+        await userSelect.destroyPermanently();
+      });
+
+      setData({} as User);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   useEffect(() => {
     async function loadData() {
       const userCollection = database.get<ModelUser>("users");
@@ -88,6 +103,7 @@ function AuthProvider({ children }: AuthProvidderProps) {
       value={{
         user: data,
         signIn,
+        SignOut,
       }}
     >
       {children}

@@ -17,7 +17,7 @@ export function AppStackRoutes() {
         headerShown: false,
       }}
     >
-      <Screen name="Home" component={Home} />
+      <Screen name="Index" component={Home} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Schedulling" component={Schedulling} />
       <Screen name="SchedullingDetails" component={SchedullingDetails} />
