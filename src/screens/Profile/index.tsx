@@ -3,10 +3,12 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import * as Yup from "yup";
 import { StatusBar } from "expo-status-bar";
 import { useTheme } from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
@@ -30,9 +32,10 @@ import {
   Section,
 } from "./styles";
 import { PasswordInput } from "../../components/PasswordInput";
+import { Button } from "../../components/Button";
 
 export function Profile() {
-  const { user, SignOut } = useAuth();
+  const { user, SignOut, updateUser } = useAuth();
   const [option, setOption] = useState<"dataEdit" | "passwordEdit">("dataEdit");
   const [avatar, setAvatar] = useState(user.avatar);
   const [name, setName] = useState(user.name);
@@ -71,6 +74,34 @@ export function Profile() {
       return;
     }
     setAvatar(pickerResult.uri);
+  }
+
+  async function handleProfileUpdate() {
+    try {
+      const schema = Yup.object().shape({
+        driverLicense: Yup.string().required("CNH é obrigatória"),
+        name: Yup.string().required("Nome é obrigatório"),
+      });
+
+      const data = { name, driverLicense };
+      await schema.validate(data);
+      await updateUser({
+        id: user.id,
+        user_id: user.user_id,
+        email: user.email,
+        name,
+        drive_license: driverLicense,
+        avatar: avatar,
+        token: user.token,
+      });
+
+      Alert.alert("Perfil atualizado com sucesso!");
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        Alert.alert("Opa", error.message);
+      }
+      Alert.alert("Não foi possível atualizar seu perfil");
+    }
   }
 
   return (
@@ -123,6 +154,7 @@ export function Profile() {
                   placeholder="Nome"
                   autoCorrect={false}
                   defaultValue={name}
+                  onChangeText={setName}
                 />
                 <Input
                   iconName="mail"
@@ -137,6 +169,7 @@ export function Profile() {
                   autoCapitalize="none"
                   keyboardType="numeric"
                   defaultValue={driverLicense}
+                  onChangeText={setDriverLicense}
                 />
               </Section>
             ) : (
@@ -158,6 +191,7 @@ export function Profile() {
                 />
               </Section>
             )}
+            <Button title="Salvar alterações" onPress={handleProfileUpdate} />
           </Content>
         </Container>
       </TouchableWithoutFeedback>
