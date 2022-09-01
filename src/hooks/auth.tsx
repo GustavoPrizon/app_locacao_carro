@@ -14,7 +14,7 @@ interface User {
   user_id: string;
   email: string;
   name: string;
-  drive_license: string;
+  driver_license: string;
   avatar: string;
   token: string;
 }
@@ -84,19 +84,19 @@ function AuthProvider({ children }: AuthProvidderProps) {
   }
 
   async function updateUser(user: User) {
-    try{
+    try {
       const userCollection = database.get<ModelUser>("users");
       await database.write(async () => {
         const userSelected = await userCollection.find(user.id);
         await userSelected.update((userData) => {
-          userData.name = user.name,
-          userData.drive_license = user.drive_license,
-          userData.avatar = user.avatar,
-        })
-      })
+          (userData.name = user.name),
+            (userData.drive_license = user.drive_license),
+            (userData.avatar = user.avatar);
+        });
+      });
 
       setData(user);
-    }catch(error){
+    } catch (error) {
       throw new Error(error);
     }
   }
