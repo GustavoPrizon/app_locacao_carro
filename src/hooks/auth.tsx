@@ -53,11 +53,10 @@ function AuthProvider({ children }: AuthProvidderProps) {
       const userCollection = database.get<ModelUser>("users");
       await database.write(async () => {
         await userCollection.create((newUser) => {
-          (newUser.user_id = user.id),
-            (newUser.name = user.name),
-            (newUser.email = user.email),
+          (newUser.name = user.name),
             (newUser.user_id = user.id),
-            (newUser.drive_license = user.drive_license),
+            (newUser.email = user.email),
+            (newUser.driver_license = user.driver_license),
             (newUser.avatar = user.avatar),
             (newUser.token = token);
         });
@@ -85,12 +84,13 @@ function AuthProvider({ children }: AuthProvidderProps) {
 
   async function updateUser(user: User) {
     try {
+      // console.log(user);
       const userCollection = database.get<ModelUser>("users");
       await database.write(async () => {
         const userSelected = await userCollection.find(user.id);
         await userSelected.update((userData) => {
           (userData.name = user.name),
-            (userData.drive_license = user.drive_license),
+            (userData.driver_license = user.driver_license),
             (userData.avatar = user.avatar);
         });
       });

@@ -39,7 +39,7 @@ export function Profile() {
   const [option, setOption] = useState<"dataEdit" | "passwordEdit">("dataEdit");
   const [avatar, setAvatar] = useState(user.avatar);
   const [name, setName] = useState(user.name);
-  const [driverLicense, setDriverLicense] = useState(user.driver_license);
+  const [driverLicense, setDriverLicense] = useState(user.drive_license);
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -48,7 +48,20 @@ export function Profile() {
   }
 
   function handleSignOut() {
-    SignOut();
+    Alert.alert(
+      "Atenção!",
+      "Se você sair, irá precisar de internet para conectar novamente.",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => {},
+        },
+        {
+          text: "Sair",
+          onPress: () => SignOut(),
+        },
+      ]
+    );
   }
 
   function handleOptionChange(optionSelected: "dataEdit" | "passwordEdit") {
@@ -91,7 +104,7 @@ export function Profile() {
         email: user.email,
         name,
         driver_license: driverLicense,
-        avatar: avatar,
+        avatar,
         token: user.token,
       });
 
@@ -100,7 +113,6 @@ export function Profile() {
       if (error instanceof Yup.ValidationError) {
         Alert.alert("Opa", error.message);
       }
-      console.log(error);
       Alert.alert("Não foi possível atualizar seu perfil");
     }
   }
