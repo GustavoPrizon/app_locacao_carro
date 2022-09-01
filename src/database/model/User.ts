@@ -10,7 +10,7 @@ class User extends Model {
 
   @field("email") email!: string;
 
-  @field("drive_license") drive_license!: string;
+  @field("drive_license") driver_license!: string;
 
   @field("avatar") avatar!: string;
 

@@ -1,11 +1,11 @@
 import React from "react";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, TouchableOpacityProps } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
 import { useTheme } from "styled-components";
 
 import { Container, Title } from "./styles";
 
-interface Props extends RectButtonProps {
+interface Props extends TouchableOpacityProps {
   title: string;
   color?: string;
   load?: boolean;
