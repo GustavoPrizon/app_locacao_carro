@@ -1,6 +1,5 @@
 import React from "react";
-import GasolineSvg from "../../assets/gasoline.svg";
-import { CarDTO } from "../../dtos/CarDTO";
+import { Car as ModelCar } from "../../database/model/Car";
 import { getAccessoryIcons } from "../../utils/getAccessoryIcons";
 
 import {
@@ -17,7 +16,7 @@ import {
 } from "./styles";
 
 interface Props {
-  data: CarDTO;
+  data: ModelCar;
   elevation?: number;
   onPress: () => {};
 }
